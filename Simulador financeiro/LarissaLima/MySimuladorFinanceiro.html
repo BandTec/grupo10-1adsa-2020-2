@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="port">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro-Sprint1</title>
+    <link rel="stylesheet" href="MySimuladorFinanceiro.css">
+</head>
+<body>
+    
+    <div class="borda"></div>
+    
+    <div class="navbar">
+        <div class="idioma" style="height: 100%;">
+            <img src="./BandeiraBrasil.png" alt="Bandeira do Brasil" style="height: 30%;">
+            <img src="./BandeiraEUA.png" alt= "Bandeira dos EUA" style="height: 30%;">
+            <img src="./BandeiraEspanha.png" alt= "Bandeira da Espanha" style="height: 30%;">
+        </div>
+            
+        <div class="conteudo">
+            <img src="./GSlogo2.png" alt="logo G2" style="height: 90%;">
+            
+            <ul> 
+                <li>Login e Cadrasto</li>
+                <li><b>Serviços</b></li>
+                <li>Fale Conosco</li>
+                <li>Quem somos</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="borda"></div>
+
+    <center>
+       <!-- Simulação- Comparação entre Sistema Hidropônico Normal e Sistema que utiliza nossos sensores, com uma estipulação mínima de 0,01 centavos adicional em cada item cultivado. Isso porque os cultivos, quando desenvolvidos dentro de um ambiente adequadamente monitorado(variáveis de temperatura e umidade dentro dos parâmetros necessários), resultam em produtos de alta qualidade, possibilitando sua valorização.  -->
+
+        <h2 style="margin-top: 50px;">Sistema Hidropônico Normal <i>VS</i> Sistema Hidropônico com nossos sensores</h2>
+        
+        <br>Qual o aproveitamento da colheita? <input id="rendimento" placeholder="Em unidades"><br>
+        Qual o atual preço unitário de venda? <input id="preco" placeholder="Em reais"><br>
+        
+        <br><button onclick="Rendimento()" class="button">Calcular Rendimento</button>
+        <div id="r1"></div>
+        <br><button onclick="Rendimento_ideal()" class="button">Maximização do seu Rendimento</button>
+        <div id="r2"></div>
+        <br><button onclick="Diferenca()" class="button">Lucro com a valorização</button>
+        <div id="d12"></div>
+        <br><img src="./ImagemCodigo(2).png" id="imagem2" style="display: none; width: 350px;"> 
+        <br><button onclick="Resetar()" id="resetar" class="button" style="display: none;">Reinicializar o Sistema</button> 
+    </center>
+</body>
+</html>
+
+<script>
+    var Rendimento1 = 0;
+    var Rendimento2 = 0;
+    
+    function Rendimento() {
+        Rendimento1 = Number(rendimento.value) * Number(preco.value); 
+        r1.innerHTML = `<br><b> O seu rendimento atual é de: R$</b><i>${Rendimento1.toFixed(2)}</i>`;
+        //Rendimento normal = quantidade de itens colhidos * preço unitário atual
+    }   
+    function Rendimento_ideal() {
+        Rendimento2 = (Number(preco.value) + Number(0.01)) * rendimento.value;
+        r2.innerHTML = `<br><b>Com o nosso sistema, o seu Rendimento passaria a ser de, no mínimo: R$</b><i>${Rendimento2.toFixed(2)}</i>`;
+        //Rendimento mínimo estipulado =  preço unitário + 0,01 centavos -> (valorização) * quantidade de itens colhidos 
+    }
+    function Diferenca() {
+        var Diferenca_12 = Rendimento2 - Rendimento1;
+        d12.innerHTML = `<br><b>Assim, com uma valorização estimada de apenas 0,01 centavos em cada unidade de sua colheita, espera-se que seu lucro adicional seja de: R$</b><i>${Diferenca_12.toFixed(2)}</i><br>`;
+        //Lucro mínimo= Diferença entre Rendimento Normal e Rendimento mínimo estipulado
+        imagem2.style.display = "block";
+        resetar.style.display = "block";
+    }
+    function Resetar() {
+        r1.innerHTML = "";
+        r2.innerHTML = "";
+        d12.innerHTML = "";
+        imagem2.style.display = "none";
+        resetar.style.display = "none";
+    }
+</script>
+      

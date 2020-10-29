@@ -1,0 +1,337 @@
+/* Aqui estou importando minha fonte de uma arquivo externo */
+@font-face {
+  font-family: Changa One;
+  src: url('../font/ChangaOne-Regular.ttf');
+}
+
+/* Efeito do css do scrool sem jQuery */
+/* html {
+    scroll-behavior: smooth;
+} */
+
+/* Com esse caractere eu consegui aplicar em tudo, ou seja tudo que que eu quiser 
+mudar geralmente na minha pagina eu mudo usado esse caractere (*)  */
+* {
+  padding: 0;
+  margin: 0;
+  outline: 0;
+  font-family: Roboto;
+}
+
+/* Eu defini esse conteiner para conseguir manipular o header da melhor forma,
+coloquei uma altura usando o vh que dá uma espaçamento maior que o px, porem aplicado para
+altura, usei o display: flex, pois assim eu transformo o container bem mais flexiveis,
+tornando ele muito mais pratico e relativo de se usar e por ultimo importei a imagem de fundo sem que ele repita e ficando com o tamanho do container. */
+.container {
+  height: 100vh;
+  background: url('../img/fundo.png') no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  width: 100%;
+  height: 15vh;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.9);
+}
+
+/* Deixei ele essa classe como filho pois com que vou criar classes filhas para colocar a imagem e os links do menu, defini um tamanho estático tambem, e um justify-content: space-evenly, que é uma propriedade que só é ativada quando o a classe é um display flex, ele tras um espaçamento entre os elementos que estao dentro dessa classe, sem que os elementos fiquem muito grudados no elemento pai, ou seja, ele nao fica muito grudadas nas bordas e consegue dar uma espaçamentos entre os elementos de forma que nao quebre, especialemente eles precisam estar com um tamanho de altura e largura definidos. Já o align-items center, eu alinhei os itens que contem nessa classe verticalmente para o centro. Colocando uma borda na parte de baixo da div, especificando uma espeçura, tipo e cor da borda. */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+  height: 100%;
+}
+
+/* Classe que defini para colocar a imagem dentro */
+.img {
+  width: 300px;
+  height: 80px;
+  background-color: black;
+}
+
+/* Classe que coloquei para configurar os links novamente o display flex, importantissimo para conseguir deixas os links de forma mais flexiveis e usais. */
+.links {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  font-size: 20px;
+  color: white;
+}
+
+/* Tirando as bolinhas que ficam do lado das bolinhas da lista */
+.links ul {
+  list-style-type: none;
+}
+
+/* Aqui especifquei que quero mudar a classe e os elementos que estao dentro delas ou seja tudo que mudar nesses vai mudar automaticamento para classe e para os dois elementos espeficados, e coloquei uma padding que para dar um espaçamento interno do elemento para todos os lados, e um display inline para deixar em linha de forma horizontal a minha lista que por padrão vem de forma vertical. */
+.links ul li {
+  padding: 5px;
+  display: inline;
+}
+
+/* Tirei a decoração dos links que por padrão ele vem com uma cor pardrão e uma estilização pardrão, assim mudando a cor e tirando a estilização padrão dele. */
+.links a {
+  text-decoration: none;
+  font: 700 20px Archivo;
+  color: white;
+}
+
+/* Container de titulo que vai ficar em cima da imagem inicial abaixo da navbar, apliquei um text-align center, que alinha o texto no centro, depois coloquei um margin-top para afastar o conteudo mais para baixo, para que nao fique tão a acima e depois apliquei uma altura estática para ele. */
+.title {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* border: 2px solid blue; */
+}
+
+/* Aumentei o tamanho da fonte para que não fique tao pequeno somento para o elemento h1. */
+.title h1 {
+  font-size: 70px;
+  color: white;
+  font: 700 70px Archivo;
+  text-shadow: 2px 2px #333;
+}
+
+/* Aumentei a altura da linha, por padrão os elementos eles contem um tamanho da linha padrão com line-height eu posso estar alterando isso, importante para que as palavras nao fiquem tao separadas do titulo que coloquei logo acima. E novamente alterei o tamanho e somento para o elemento p. */
+.title p {
+  font: 500 30px Roboto;
+  color: white;
+  text-shadow: 2px 2px #333;
+}
+
+/* Aqui criei essa classe para os botoes que possivelmente posso criar para ficar abaixo doos textos. Apliquei um inline-block que por padrão isso nao é aplicado entao coloquei para que transforme o elemento em um block para que consiga definir uma altura e uma largura, tenho que fazer isso no elemento a que é nesse elemento que estou aplicando a essa classe como foi feito no html. Novamente define uma largura e altura para ele, coloquei uma espessura de borda, tipo e cor, mudei o tamanho da fonte, coloquei o famoso padding pois assim deixo o conteudo do elemento mais afastado das bordas internas, apliquei os transition para que criei um efeito no elemento para conseguir trocar a cor mais suavemente quando for aplicado no hover e por ultimo apliquei uma cor para fonte */
+.buttons {
+  border: 1px solid#1dd1a1;
+  background-color: #1dd1a1;
+  font: 700 20px Archivo;
+  margin-top: 24px;
+  border-radius: 8px;
+  padding: 10px 36px;
+  color: white;
+  transition: color, background-color 0.3s;
+  cursor: pointer;
+}
+
+/* Aqui toda vez que passar o mouse sobre a classe que apliquei ao elemento ele vai mudar algo, no caso vai aplicar a transição que defini o quanto ele vai demorar pra fazer essa transição, e define que ele vai só mudar a cor da borda, mantendo a espessura e o tipo da borda */
+.buttons:hover {
+  color: #1dd1a1;
+  background-color: white;
+}
+
+/* Criei essa classe para colocar todos os elementos para realização das informações que vou organizar ai dentro ou seja ele vai ser o elemento pai da coisa. Defini o famoso display flex, o justify-content é para alinhar os elementos horizontalmente, eu defino como quero alinhar esses elementos no caso coloquei no centro, e o align-items eu alinho os itens verticalmente e também alinhei no centro. Ambas propriedades só são ativadas quando a classe é definida como display flex. */
+.info-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  height: 70vh;
+}
+
+/* Aqui coloquei umas classes para colocar nos elementos, deixar eles bem mais organizados. Coloquei o display flex aqui também, defini a direção dos elementos como linha(row). */
+.infos {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  height: 30vh;
+}
+
+/* Criei essa classe para justamente separar a parte de cima dos conteudos que vão estar nos elementos, criei esse para o titulo, utilizado o tão aclamdo display flex. Defini uma altura e uma largura em forma de porcentagem que também tem uma escala maior do que do px entao ele se adapta ao tamanho da tela entao fica mais ou menos responsivo, mas é mais para que a imagem se adapte melhor no elemento. */
+.info-title {
+  display: flex;
+  width: 20%;
+  height: 25%;
+}
+
+/* Aqui eu ajustei o elemento de imagem, e editei a largura e altura como 100% para que fique completamente do tamanho do elemento(div) ,mais especificamente no elemento img. */
+.info-title img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Aqui estou alterando a classe da parte de baixo do cabeçalho do elemento, aqui é onde vai ficar meu texto das informações junto com o title. Eu coloquei um flex-direction column, pra definir uma direção como coluna para que cada elemento fique um em baixo do outro e coloquei uma lagura de 100% para ocupar a largura toda do container.*/
+.info-text {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Aqui editei espeficicamente o elemento h1 de titulo, colocando uma cor e alterando o tamanho da fonte. */
+.info-text h1 {
+  line-height: 30px;
+  color: #1dd1a1;
+  font-size: 20px;
+}
+
+/* Aqui editei espeficicamente o elemento p mudei a cor, editei o tamanho da fonte e coloquei um margin top de 10px para que ele nao fique tao grudado ao titulo, ou seja, ele vai dar uma espaçamento na parte de cima do elemento por fora, de 10 pixels. */
+.info-text p {
+  margin-top: 10px;
+  color: #bdc3c7;
+  font-size: 20px;
+}
+
+.about{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 50vh; 
+  background-color: #ecf0f1;
+}
+
+.about-info {
+  display: flex;
+  flex-direction: column;
+  width: 40%; 
+}
+
+.about-info h1{
+  font-style: italic;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 80px;
+}
+.about-info p{
+  font-size: 22px;
+  color: #95a5a6;
+}
+.about-info img{
+  width: 100%;
+  height: 100%;
+}
+
+.title-team{
+  height: 200px;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font: 700 Archivo;
+  text-shadow: 2px 2px #333;
+}
+.team-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100vh;
+}
+
+.team-item{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 350px;
+}
+
+.team-header{
+  display: flex;
+  height: 70%;
+  width: 60%;
+  border-radius: 50%;
+  -webkit-box-shadow: 10px 11px 5px 0px rgba(0,0,0,0.34);
+  -moz-box-shadow: 10px 11px 5px 0px rgba(0,0,0,0.34);
+  box-shadow: 10px 11px 5px 0px rgba(0,0,0,0.34);
+}
+
+.team-header img{
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+.team-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 30%;
+}
+
+.team-content h2, p{
+  font-family: montserrat;
+  color: #bdc3c7;
+}
+
+.contact{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.contact-title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15vh;
+  width: 30%;
+}
+.contact-title h1{
+  font-style: italic;
+  font-weight: 400;
+}
+
+.contact-item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 70%;
+  height: 50vh;
+}
+
+.contact-info{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 20px;
+  height: 250px;
+  width: 50%;
+  border-right:  2px solid #bdc3c7;
+}
+.contact-about{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 250px;
+  width: 50%;
+}
+
+.contact-about label{
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-family: montserrat;
+}
+
+.contact-about input{
+  width: 250px;
+  height: 30px;
+  font-size: 20px;
+  margin-bottom: 20px;
+  background-color: #95a5a6;
+  color: #ecf0f1;
+  font-family: montserrat;
+}
+.contact-about a{
+  display: block;
+  text-align: center;
+  padding: 10px;
+  width: 130px;
+  background-color: #1dd1a1;
+  color: #ecf0f1;
+  font-family: montserrat;
+}

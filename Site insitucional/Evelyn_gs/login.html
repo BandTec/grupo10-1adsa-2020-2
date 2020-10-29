@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Sensors</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+    
+<div class="navbar">
+    <div class="container">
+        <h1><span><img src="logodois.jpeg"></span></h1>
+        <ul> 
+            <li class="current"><a href="index.html">Home</a></li>
+            <li class="current"><a href="login.html">Login/Cadastro</a></li>
+            <li class="current"><a href="servicos.html">Serviços</a></li>
+            <li class="current"><a href="contato.html">Fale conosco</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="caixa">
+<div class="login">
+    <h2>Login</h2>
+    <h3>Já sou cadastrado</h3><br>
+        CPF: <input id="in_cpfcadastrado"> <br><br>
+        Senha: <input id="in_senha"> <br><br>
+
+        <!--inserindo um atributo que sera utilizado no javascript-->
+        <button onclick="entrar()">Entrar</button><br><br>
+        <button onclick="esqueceusenha()">Esqueceu a senha?</button>
+</div>
+
+<div class="cadastro">
+    <h2>Cadastrar</h2><br>
+        Nome Completo: <input id="in_nome"> <br><br>
+        e-mail: <input id="in_email"> <br><br>
+        CPF: <input id="in_cpfcadastrar"> <br><br>
+        Telefone: <input id="in_telefone"> <br><br>
+        Senha: <input id="in_senhaum"> <br><br>
+        Confirmar senha: <input id="in_senha"> <br><br>
+
+        <!--inserindo um atributo que sera utilizado no javascript-->
+        <button onclick="cadastrar()">Cadastrar</button>
+</div>
+</div>
+
+</body>
+
+</html>

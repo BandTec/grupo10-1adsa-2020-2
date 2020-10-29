@@ -1,0 +1,452 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Line Chart</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
+    <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+    <style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+<center>
+    <div>
+        <section>
+
+            <h1>Sensor DHT11 - Temperatura e Umidade</h1>
+            <h1>Status Umidade: <span id="sp_statusHumid"></span></h1>
+            <h2>Média Hora: <label id='averageHourHumidity'>0.00</label></h2>
+        </section>
+        <section style="width:100%">
+            <h2>Média Umidade: <label id='averageHumidity'>0.00</label></h2>
+            <h2>Umidade Atual: <label id='humiCurrent'>0.00</label></h2>
+            <br>
+            <canvas id="chart-humidity"></canvas>
+            <br>
+            <h1>Status Temperatura: <span id="sp_statusTemp"></span></h1>
+            <h2>Média Temperatura: <label id='averageHumidityTemperature'>0.00</label></h2>
+            <h2>Temperatura Atual: <label id='tempCurrent'>0.00</label></h2>
+            <br>
+            <canvas id="chart-temperature"></canvas>
+            <section>
+    </div>
+</center>
+    <!-- <div>
+<section>
+<h1>Sensor TRC5000 - Switch</h1>
+</section>
+<section style="width:100%">
+<canvas id="chart-switch"></canvas>
+<section>
+</div>
+<div>
+<section>
+<h1>Sensor LDR - Luminosidade</h1>
+<h2>Média: <label id='averageLumi'>0.00</label></h2>
+<h2>Média Hora: <label id='averageHourLumi'>0.00</label></h2>
+</section>
+<section style="width:100%">
+<canvas id="chart-lumi"></canvas>
+<section>
+</div> -->
+
+    <script>
+        //Second Graphic
+
+        var context2 = document.getElementById("chart-humidity").getContext("2d");
+        context2.canvas.width = 1000;
+        context2.canvas.height = 300;
+
+
+        var contextTemperature = document.getElementById("chart-temperature").getContext("2d");
+        contextTemperature.canvas.width = 1000;
+        contextTemperature.canvas.height = 300;
+
+
+
+        var humidity = {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: "Humidity x Time",
+                    type: 'line',
+                    borderColor: ['#00BFFF'],
+                    backgroundColor: ['#00FFFF'],
+                    data: [],
+                    fill: true,
+                }],
+
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        //type: 'value',
+                        display: true,
+                        distribution: 'series',
+                        labelString: 'time',
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Humidity'
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 0
+                }
+            }
+        };
+
+        var temperature = {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: "Temperatura X Time",
+                    type: "line",
+                    borderColor: ['#00FF7F'],
+                    backgroundColor: ['#55efc4'],
+                    data: [],
+                    fill: true,
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        //type: 'value',
+                        display: true,
+                        distribution: 'series',
+                        labelString: 'time',
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Temperature'
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 0
+                }
+            }
+        };
+
+        var chartHumidity = new Chart(context2, humidity);
+        var chartTemperature = new Chart(contextTemperature, temperature);
+
+        //Função para obter os dados de temperatura do server
+        //Seria mais interessante fazer isso com WebSocket, porém para fins academicos, os dados serão atualizados via HTTP
+
+        //Esse atributo dentro do contexto serve para saber qual foi o último índice processado, assim eliminado os outros elementos na
+        //hora de montar/atualizar o gráfico
+        this.lastIndexTempHumidity = 0;
+        this.timeHumidity = 0;
+
+        this.lastTempIndex = 0;
+
+        function get_dataHumidity() {
+
+            var http = new XMLHttpRequest();
+            http.open('GET', 'http://localhost:3000/api/humidity', false);
+            http.send(null);
+
+            var obj = JSON.parse(http.responseText);
+            console.log(obj);
+
+            if (obj.data.length == 0) {
+                return;
+            }
+
+            var _lastIndexTemp = this.lastIndexTempHumidity;
+            this.lastIndexTempHumidity = obj.data.length;
+            listTemp = obj.data.slice(_lastIndexTemp);
+
+            var _indexLastTemp = this.lastTempIndex;
+            this.lastTempIndex = obj.dataTemp.length;
+            listDataTemp = obj.dataTemp.slice(_indexLastTemp);
+
+
+
+            listTemp.forEach(data => {
+                //Máximo de 60 itens exibidos no gráfico	
+                if (chartHumidity.data.labels.length == 10 && chartHumidity.data.datasets[0].data.length == 10) {
+                    chartHumidity.data.labels.shift();
+                    chartHumidity.data.datasets[0].data.shift();
+                }
+
+                chartHumidity.data.labels.push(this.time++);
+                chartHumidity.data.datasets[0].data.push(parseFloat(data));
+
+                chartHumidity.update();
+            });
+
+            listDataTemp.forEach(tempData => {
+                //Máximo de 60 itens exibidos no gráfico	
+                if (chartTemperature.data.labels.length == 10 && chartTemperature.data.datasets[0].data.length == 10) {
+                    chartTemperature.data.labels.shift();
+                    chartTemperature.data.datasets[0].data.shift();
+                }
+
+                chartTemperature.data.labels.push(this.time++);
+                chartTemperature.data.datasets[0].data.push(parseFloat(tempData));
+
+                chartTemperature.update();
+            });
+
+
+            document.getElementById('averageHumidity').textContent = obj.average;
+            document.getElementById('averageHumidityTemperature').textContent = obj.avarageTemp;
+            document.getElementById('tempCurrent').textContent = obj.currentTemp;
+            document.getElementById('averageHourHumidity').textContent = obj.averageHour;
+            document.getElementById('humiCurrent').textContent = obj.currentHumity;
+
+            if(obj.currentTemp <= 12 || obj.currentHumity <= 42){
+                sp_statusHumid.style.color = 'darkblue'
+                sp_statusHumid.innerHTML = 'Critíco'
+            } else if(obj.currentTemp <= 14 || obj.currentHumity <= 45){
+                sp_statusHumid.style.color = 'blue'
+                sp_statusHumid.innerHTML = 'Emergência'
+            } else if(obj.currentTemp <= 16 || obj.currentHumity <= 48){
+                sp_statusHumid.style.color = 'deepskyBlue'
+                sp_statusHumid.innerHTML = 'Alerta'
+            } else if(obj.currentTemp <= 29 || obj.currentHumity <= 70){
+                sp_statusHumid.style.color = 'green'
+                sp_statusHumid.innerHTML = 'Ideal'
+            } else if(obj.currentTemp < 34 || obj.currentHumity < 75){
+                sp_statusHumid.style.color = 'yellow'
+                sp_statusHumid.innerHTML = 'Alerta'
+            } else if(obj.currentTemp < 35 || obj.currentHumity < 78){
+                sp_statusHumid.style.color = 'orange'
+                sp_statusHumid.innerHTML = 'Emergência'
+            } else {
+                sp_statusHumid.style.color = 'red'
+                sp_statusHumid.innerHTML = 'Critíco'
+            }
+
+            if(obj.currentHumity <= 42){
+                sp_statusTemp.style.color = 'darkblue'
+                sp_statusTemp.innerHTML = 'Critíco'
+            } else if(obj.currentHumity <= 45){
+                sp_statusTemp.style.color = 'blue'
+                sp_statusTemp.innerHTML = 'Emergência'
+            } else if(obj.currentHumity <= 48){
+                sp_statusTemp.style.color = 'deepskyBlue'
+                sp_statusTemp.innerHTML = 'Alerta'
+            } else if(obj.currentHumity <= 70){
+                sp_statusTemp.style.color = 'green'
+                sp_statusTemp.innerHTML = 'Ideal'
+            } else if(obj.currentHumity < 75){
+                sp_statusTemp.style.color = 'yellow'
+                sp_statusTemp.innerHTML = 'Alerta'
+            } else if(obj.currentHumity < 78){
+                sp_statusTemp.style.color = 'orange'
+                sp_statusTemp.innerHTML = 'Emergência'
+            } else {
+                sp_statusTemp.style.color = 'red'
+                sp_statusTemp.innerHTML = 'Critíco'
+            }
+        }
+
+        get_dataHumidity();
+
+        setInterval(() => {
+            get_dataHumidity();
+        }, 1000);
+
+        // //Thirty Graphic
+
+        // var context3 = document.getElementById("chart-switch").getContext("2d");
+        // context3.canvas.width = 1000;
+        // context3.canvas.height = 300;
+
+        // var switch_sensor = {
+        // type: 'line',
+        // data: {
+        // datasets: [{
+        // label: "Switch x Time",
+        // type: 'line',
+        // borderColor: ['#ae3f3f'],
+        // backgroundColor: ['#c97f7f']
+        // }]
+        // },
+        // options: {
+        // scales: {
+        // xAxes: [{
+        // //type: 'value',
+        // distribution: 'series',
+        // ticks: {
+        // beginAtZero:true
+        // }
+        // }],
+        // yAxes: [{
+        // scaleLabel: {
+        // display: true,
+        // labelString: 'Switch'
+        // },
+        // ticks: {
+        // beginAtZero:true
+        // }
+        // }]
+        // },
+        // animation: {
+        // duration: 0
+        // }
+        // }
+        // };
+
+        // var chartSwitch = new Chart(context3, switch_sensor);
+
+        // //Função para obter os dados de temperatura do server
+        // //Seria mais interessante fazer isso com WebSocket, porém para fins academicos, os dados serão atualizados via HTTP
+
+        // //Esse atributo dentro do contexto serve para saber qual foi o último índice processado, assim eliminado os outros elementos na
+        // //hora de montar/atualizar o gráfico
+        // this.lastIndexTempHumidity = 0;
+        // this.timeSwitch = 0;
+
+        // function get_switch(){
+
+        // var http = new XMLHttpRequest();
+        // http.open('GET', 'http://localhost:3000/api/switch', false);
+        // http.send(null);        
+
+        // var obj = JSON.parse(http.responseText);
+        // if (obj.data.length == 0){
+        // return;
+        // }
+
+        // var _lastIndexTemp = this.lastIndexTempSwitch;
+        // this.lastIndexTempSwitch = obj.data.length;
+        // listTemp = obj.data.slice(_lastIndexTemp);
+
+        // listTemp.forEach(data => {
+        // //Máximo de 60 itens exibidos no gráfico
+        // if (chartSwitch.data.labels.length == 10 && chartSwitch.data.datasets[0].data.length == 10){
+        // chartSwitch.data.labels.shift();
+        // chartSwitch.data.datasets[0].data.shift();
+        // }
+
+        // chartSwitch.data.labels.push(this.time++);
+        // chartSwitch.data.datasets[0].data.push(parseFloat(data));
+        // chartSwitch.update();
+        // });
+
+        // } 
+
+        // get_switch();
+
+        // //Fourty Graphic
+
+        // var context4 = document.getElementById("chart-lumi").getContext("2d");
+        // context4.canvas.width = 1000;
+        // context4.canvas.height = 300;
+
+        // var lumi_sensor = {
+        // type: 'line',
+        // data: {
+        // datasets: [{
+        // label: "Luminosity x Time",
+        // type: 'line',
+        // borderColor: ['#ffff19'],
+        // backgroundColor: ['#ffff7f']
+        // }]
+        // },
+        // options: {
+        // scales: {
+        // xAxes: [{
+        // //type: 'value',
+        // distribution: 'series',
+        // ticks: {
+        // beginAtZero:true
+        // }
+        // }],
+        // yAxes: [{
+        // scaleLabel: {
+        // display: true,
+        // labelString: 'Luminosity'
+        // },
+        // ticks: {
+        // beginAtZero:true
+        // }
+        // }]
+        // },
+        // animation: {
+        // duration: 0
+        // }
+        // }
+        // };
+
+        // var chartLumi = new Chart(context4, lumi_sensor);
+
+        // //Função para obter os dados de temperatura do server
+        // //Seria mais interessante fazer isso com WebSocket, porém para fins academicos, os dados serão atualizados via HTTP
+
+        // //Esse atributo dentro do contexto serve para saber qual foi o último índice processado, assim eliminado os outros elementos na
+        // //hora de montar/atualizar o gráfico
+        // this.lastIndexLumi = 0;
+        // this.timeLumi = 0;
+
+        // function get_lumi(){
+
+        // var http = new XMLHttpRequest();
+        // http.open('GET', 'http://localhost:3000/api/luminosity', false);
+        // http.send(null);        
+
+        // var obj = JSON.parse(http.responseText);
+        // console.log(obj)
+        // if (obj.data.length == 0){
+        // return;
+        // }
+
+        // var _lastIndexTemp = this.lastIndexLumi;
+        // this.lastIndexLumi = obj.data.length;
+        // listTemp = obj.data.slice(_lastIndexTemp);
+
+        // listTemp.forEach(data => {
+        // //Máximo de 60 itens exibidos no gráfico
+        // if (chartLumi.data.labels.length == 10 && chartLumi.data.datasets[0].data.length == 10){
+        // chartLumi.data.labels.shift();
+        // chartLumi.data.datasets[0].data.shift();
+        // }
+
+        // chartLumi.data.labels.push(this.time++);
+        // chartLumi.data.datasets[0].data.push(parseFloat(data));
+        // chartLumi.update();
+        // });
+
+        // document.getElementById('averageLumi').textContent = obj.average;
+        // document.getElementById('averageHourLumi').textContent = obj.averageHour;
+
+        // } 
+
+        // get_lumi();
+
+        // setInterval(() => {
+        // get_data();
+        // get_dataHumidity();
+        // get_switch();
+        // get_lumi();
+        // }, 1000);
+    </script>
+</body>
+
+</html>

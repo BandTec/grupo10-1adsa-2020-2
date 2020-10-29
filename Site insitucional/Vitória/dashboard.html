@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
+    <script src="https://www.chartjs.org/samples/latest/utils.js"></script>
+    <style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="coluna_1">
+            <div class="coluna_1-title">
+                <a href="home.html">Estufa S1</a>
+            </div>
+            <div class="coluna_1-item">
+                <h1>Quantidade de Sensores: 1</h1>
+            </div>
+            <div class="coluna_1-item">
+                <h1>Temperatura Máxima: 50ºC</h1>
+            </div>
+            <div class="coluna_1-item">
+                <h1>Umidade Máxima: 70%</h1>
+            </div>
+        </div>
+        <div class="coluna_2">
+            <div class="grafico">
+                <h1>Tomate</h1>
+            </div>
+            <div class="banana">
+                <div class="coluna_3">
+                    <div class="ratio1">
+                        <p>Umidade Atual:</p>
+                        <p id="currentUmitity"><b>0%</b></p>
+                    </div>
+                    <div class="ratio2">
+                        <p>Temperatura Atual:</p>
+                        <p id="currentTemperature"><b>0ºC</b></p>
+                    </div>
+                </div>
+                <div class="grafico2">
+                    <div class="primeiro">
+                        <canvas id="graficoChartHumity"></canvas>
+                    </div>
+                    <div class="segundo">
+                        <canvas id="graficoChartTemperature"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/sensor1.js"></script>
+    <script src="js/sensor2.js"></script>
+</body>
+
+</html>
