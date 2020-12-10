@@ -1,0 +1,310 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {}
+
+.container {
+    height: 140vh;
+    width: 100%;
+    background-image: url('../imagens/hidroponia.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 3px 3px 5px;
+    border-bottom: 2px rgb(108, 226, 108) solid;
+}
+
+.navbar ul {
+    display: flex;
+    align-items: center;
+}
+
+.navbar li,
+.navbar a {
+    list-style: none;
+    margin-left: 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    transition: color 0.5s;
+}
+
+.bandeira img {
+    height: 20px;
+    border-radius: 20%;
+    cursor: pointer;
+}
+
+.fale_conosco_container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.fale_conosco {
+    height: 90%;
+    display: flex;
+    background-color: #ffffffbb;
+    color: white;
+    width: 80%;
+    padding-left: 20px;
+    font-size: medium;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 5px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    /* border-radius: 20%; */
+    border: 2px green solid;
+    flex-direction: column;
+}
+
+.texto {
+    height: 13%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.texto h2 {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    margin-bottom: 3%;
+}
+
+.texto h4 {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    width: 40%;
+    line-height: 23px;
+}
+
+.perguntas {
+    height: 70%;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.perguntas span {
+    font-size: 25px;
+    margin-right: 2%;
+    cursor: pointer;
+}
+
+.perguntas_respostas {
+    width: 95%;
+    height: 10%;
+    text-align: center;
+    background-color: rgb(108, 226, 108);
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+#resposta_login {
+    display: none;
+}
+
+#resposta_cadastro {
+    display: none;
+}
+
+#resposta_estufa {
+    display: none;
+}
+
+#resposta_dashboard {
+    display: none;
+}
+
+.fale_conosco input {
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 5px 0px;
+    width: 325px;
+    outline: none;
+    border: 2px green solid;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+::-webkit-input-placeholder {
+    color: rgb(5, 8, 7);
+    display: flex;
+    text-align: center;
+}
+
+.fale_conosco button {
+    height: 35px;
+    width: 100px;
+    font-weight: bold;
+    font-size: 15px;
+    color: white;
+    background-color: rgba(4, 175, 4);
+    border: 1px solid green;
+    border-radius: 20px;
+    transition: transform 0.5s;
+    cursor: pointer;
+    outline: none;
+}
+
+.fale_conosco button:hover {
+    transform: scale(1.2);
+    box-shadow: 5px 5px 14px 2px rgba(0, 0, 0, 0.75);
+}
+
+.fale_conosco_icone {
+    height: 75px;
+    margin-left: 1%;
+    margin-bottom: 7px;
+}
+
+.mensagem input {
+    padding: 60px 0px;
+}
+
+.footer {
+    height: 35vh;
+    width: 100%;
+}
+
+.contato_footer {
+    height: 70%;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.contato_footer i:hover {
+    color: white;
+}
+
+.redes_sociais {
+    display: flex;
+}
+
+.redes_sociais i {
+    color: rgb(122, 173, 112);
+    font-size: 24px;
+    margin: 0 5px;
+}
+
+.topicos ul {
+    display: flex;
+    align-items: center;
+}
+
+.topicos li {
+    list-style: none;
+    margin-left: 8px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: rgb(122, 173, 112);
+    cursor: pointer;
+    transition: color 0.5s;
+}
+
+.topicos a {
+    text-decoration: none;
+    color: rgb(122, 173, 112);
+}
+
+.topicos a {
+    text-decoration: none;
+    color: rgb(122, 173, 112);
+}
+
+.topicos li:hover {
+    color: white;
+}
+
+.topicos a:hover {
+    color: white;
+    transition: color 0.5s;
+}
+
+.novidades {
+    display: flex;
+}
+
+.novidades h2 {
+    color: rgb(122, 173, 112);
+    font-weight: 500;
+    font-size: 19px;
+    margin-right: 11px;
+}
+
+.novidades input {
+    height: 22px;
+    width: 167px;
+    outline: none;
+    border-radius: 7px;
+    border: 2px solid #282229;
+    background-color: #ffffff;
+}
+
+.novidades button {
+    height: 26px;
+    width: 94px;
+    border-radius: 8px;
+    border: 2px solid black;
+    cursor: pointer;
+    outline: none;
+    transition: 0.5s;
+}
+
+.novidades button:hover {
+    background-color: rgb(122, 173, 112);
+}
+
+.site {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30%;
+    width: 100%;
+    background-color: rgb(122, 173, 112);
+}
+
+.site h4 {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <title>Endereço</title>
+    <link rel="stylesheet" href="./css/pag-local-estufa.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="navbar">
+            <header>
+                <p>Green<span>Sensors</span></p>
+            </header>
+            <main>
+                <div class="item">
+                    <img src="imagens/house.svg">
+                    <a href="home.html">Home</a>
+                </div>
+                <div class="item">
+                    <img src="imagens/bar-chart.svg">
+                    <a href="home.html">Estatística</a>
+                </div>
+                <div class="item">
+                    <img src="imagens/players.svg">
+                    <a href="pag-perfil.html">Perfil</a>
+                </div>
+                <div class="item">
+                    <img src="imagens/speedometer.svg">
+                    <a href="pag-sensores.html">Sensores</a>
+                </div>
+                <div class="item">
+                    <img src="imagens/login.svg">
+                    <a onclick="logOff()">Sair</a>
+                </div>
+            </main>
+        </div>
+        <div class="info">
+            <div class="info-title">
+                <h1>Informe o endereço da(s) sua(s) estufa(s)</h1>
+            </div>
+            <div class="info-detalhes">
+                <div class="title">
+                    <h1>Adicione o local da(s) sua(s) estufa(s)</h1>
+                    <p>Insira o local da(s) estufa(s)</p>
+                </div>
+                <div class="local">
+
+                    <div class="item-local">
+                        
+                        <img id="img_nova_local" src="./imagens/addestufa.png" onclick="exibir()">
+                        <p id="p_text_novo_local">Novo local</p>
+                        
+                        <form id="form_cadastro_local" method="post" >
+                            <p>Endereço da estufa</p> <br>
+
+                            Logradouro <br>
+                            <input type="text" name="logradouro" minlength="2"> <br>
+
+                            Número <br>
+                            <input type="text" name="numero" min="3"> <br>
+
+                            Bairro <br>
+                            <input type="text" name="bairro"  minlength="2"> <br>
+
+                            Cidade <br>
+                            <input type="text" name="cidade" minlength="2"> <br>
+
+                            CEP <br>
+                            <input type="text" name="cep" minlength="2"> <br>
+
+                            Complemento <br>
+                            <input type="text" name="complemento" minlength="2"> <br>
+                            
+                            <button onclick="cadastrar()">Cadastrar</button>
+                        </form>                                               
+                    </div>                                          
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/verificacoes.js"></script>
+    <script>  
+        // function verificar(){
+        //     editar_estufa.style.display = "block";
+        //     excluir_estufa.style.display = "block";
+        // }
+
+        function exibir(){
+            form_cadastro_local.style.display = 'block'
+            img_nova_local.style.display = 'none'
+            p_text_novo_local.style.display = 'none'
+        }
+
+        function dash(){
+            window.href="dashboard.html";
+        }
+
+    </script>
+
+</body>
+</html>

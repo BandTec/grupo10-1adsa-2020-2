@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <title>Estufa</title>
+    <link rel="stylesheet" href="./css/pag-estufa-style.css">
+    <link rel="stylesheet" href="./css/estufas.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="navbar">
+            <header>
+                <p>Green<span>Sensors</span></p>
+            </header>
+            <main>
+                <div class="item">
+                    <img src="imagens/house.svg">
+                    <a href="home.html">Home</a>
+                </div>
+                <div class="item">
+                    <img src="imagens/bar-chart.svg">
+                    <a href="home.html">Estatística</a>
+                </div>
+                <div class="item">
+                    <img src="imagens/players.svg">
+                    <a href="pag-perfil.html">Perfil</a>
+                </div>
+                <div class="item">
+                    <img src="imagens/speedometer.svg">
+                    <a href="pag-sensores.html">Sensores</a>
+                </div>
+                <div class="item">
+                    <img src="imagens/login.svg">
+                    <a onclick="logOff()">Sair</a>
+                </div>
+            </main>
+        </div>
+
+
+        <div class="info">
+            <div class="info-title">
+                <h1>Estufas</h1>
+            </div>
+
+            <div class="info-detalhes">
+                <div class="title">
+                    <h1>Dados das estufas</h1>
+                </div>
+            </div>
+
+
+            <!--DIVS ESTUFAS-->
+            <div class="div_estufas">
+                <div class="separarestufa">
+                    <div class="div_estufa" onclick="retornarDash(30000)">
+                        <h4>Estufa <span name="estufaNome" id="idestufa" value="8000">1</span></h4>
+                        <div class="valores">
+                            <div class="valor" id="div_temperatura">Temperatura sendo obtida...</div><br>
+                            <div class="valor" id="div_umidade">Umidade sendo obtida...</div>
+                        </div>
+                        <div class="alertas">
+                            <div class="alerta" id="div_alerta_temperatura"> </div>
+                            <div class="alerta_umidd" id="div_alerta_umidade"></div>
+                        </div>
+                    </div>
+
+                    <div class="div_estufa" onclick="retornarDash(30002)">
+                        <h4>Estufa <span name="estufaNome" id="idestufa" value="8005">2</span></h4>
+                        <div class="valores">
+                            <div class="valor" id="div_temperatura2">Temperatura sendo obtida...</div><br>
+                            <div class="valor" id="div_umidade2">Umidade sendo obtida...</div>
+                        </div>
+
+                        <div class="alertas">
+                            <div class="alerta" id="div_alerta_temperatura2"></div>
+                            <div class="alerta_umidd" id="div_alerta_umidade2"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="separarestufa">
+                    <div class="div_estufa">
+                        <h4>Estufa <span name="namecaminhao" id="idcaminhao" value="3">3</span></h4>
+                        <div class="valores">
+                            <div class="valor" id="div_temperatura3">Temperatura sendo obtida...</div><br>
+                            <div class="valor" id="div_umidade3">Umidade sendo obtida...</div>
+                        </div>
+                        <div class="alertas">
+                            <div class="alerta" id="div_alerta_temperatura3"></div>
+                            <div class="alerta_umidd" id="div_alerta_umidade3"></div>
+                        </div>
+                    </div>
+
+                    <div class="div_estufa">
+                        <h4>Estufa <span name="namecaminhao" id="idcaminhao" value="4">4</span></h4>
+                        <div class="valores">
+                            <div class="valor" id="div_temperatura4">Temperatura sendo obtida...</div><br>
+                            <div class="valor" id="div_umidade4">Umidade sendo obtida...</div>
+                        </div>
+
+                        <div class="alertas">
+                            <div class="alerta" id="div_alerta_temperatura4"></div>
+                            <div class="alerta_umidd" id="div_alerta_umidade4"></div>
+                        </div>
+                    </div> -->
+                </div>
+
+            </div>
+
+
+        
+    </body>
+
+</html>
+
+<script src="js/verificacoes.js"></script>
+<script src="js/estatisticas.js"></script>

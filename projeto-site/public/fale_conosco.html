@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Sensors</title>
+    <link rel="stylesheet" href="./css/style_fale_conosco.css">
+    <script src="https://kit.fontawesome.com/1828e94103.js" crossorigin="anonymous"></script>
+    <!-- Start of greensensors Zendesk Widget script -->
+    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=2612344f-8a27-4fad-b688-d3477b4c00fc">
+    </script>
+    <!-- End of greensensors Zendesk Widget script -->
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar">
+            <a href="index.html">
+                <img src="./imagens/logo.png" alt="">
+            </a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <a href="index.html#container_info">
+                    <li>Quem somos?</li>
+                </a>
+                <li><a href="./fale_conosco.html">FAQ</a></li>
+            </ul>
+
+            <div class="bandeira">
+                <img src="./imagens/bandeira-brasil.png" alt="">
+                <img src="./imagens/bandeira-eua.png" alt="">
+                <img src="./imagens/bandeira-espanha.png" alt="">
+            </div>
+        </div>
+        <div class="fale_conosco_container">
+            <div class="fale_conosco">
+                <div class="texto">
+                    <h2>Perguntas Frequentes</h2>
+                    <h4>Veja se respondemos as suas dúvidas com esse faq. Caso não, entre em contato conosco através do chat.
+                    </h4>
+                </div>
+                <div class="perguntas">
+                    <div class="perguntas_respostas" id="login_pergunta">Como efetuar um Login? <span id="login" onclick="aparecer_login()">+</span></div>
+                    <div class="perguntas_respostas" id="resposta_login">Para efetuar o login basta clicar na opção Login/Cadastro no menu e digitar o seu enderço de email e sua senha.</div>
+                    <div class="perguntas_respostas" id="cadastro_pergunta">Como efetuar um Cadastro?<span id="cadastro" onclick="aparecer_cadastro()">+</span></div>
+                    <div class="perguntas_respostas" id="resposta_cadastro">Para se cadastrar basta clicar na opção Login/Cadastro no menu e clicar em cadastrar e preencher os campos com os seus dados, depois é só clicar em cadastrar.</div>
+                    <div class="perguntas_respostas" id="estufa_pergunta">Onde visualizar as informações de temperatura e umidade de cada estufa?<span id="estufa" onclick="aparecer_estufa()">+</span></div>
+                    <div class="perguntas_respostas" id="resposta_estufa">Entre com seu login e senha e clique em estatísticas na página do cliente</div>
+                    <div class="perguntas_respostas" id="dashboard_pergunta">Como visualizar as informações dos sensores?<span id="dashboard" onclick="aparecer_dashboard()">+</span></div>
+                    <div class="perguntas_respostas" id="resposta_dashboard">Entre com seu login e senha e clique em sensores na página do cliente</div>
+                </div>
+                <!-- 
+                Como cadastrar?<br>
+                Resposta: Clique em Login/Cadastro no menu e clique em cadastrar, digite os dados solicitados e clique em cadastrar.<br><br>
+                Como cadastrar uma estufa?<br>
+                Resposta: Acesse o seu perfil e clique em criar estufa.<br><br>
+                Como verificar a temperatura e umidade das estufas?<br>
+                Resposta: Acesse seu perfil e clique em estufas.<br><br>
+                ?<br>
+                Resposta: .<br><br> -->
+
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <div class="contato_footer">
+                <div class="redes_sociais">
+                    <i class="fab fa-github"></i>
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="topicos">
+                    <ul>
+                        <a href="index.html">
+                            <li>Home</li>
+                        </a>
+                        <li>|</li>
+                        <a href="index.html#container_info">
+                            <li>Quem somos?</li>
+                        </a>
+                        <li>|</li>
+                        <li><a href="./fale_conosco.html">FAQ</a></li>
+                        <li>|</li>
+                        <a href="login.html">
+                            <li>Login/Cadastro</li>
+                        </a>
+                    </ul>
+                </div>
+                <div class="novidades">
+                    <h2>Receba novidades</h2>
+                    <form>
+                        <input type="email" placeholder="digite seu email">
+                        <button>Enviar</button>
+                    </form>
+                </div>
+            </div>
+            <div class="site">
+                <h4>Green Sensors &COPY; 2020</h4>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    function aparecer_login() {
+        if (login.innerHTML == '+') {
+            login.innerHTML = '-'
+            resposta_login.style.display = 'flex';
+            cadastro_pergunta.style.display = 'none';
+            estufa_pergunta.style.display = 'none';
+            dashboard_pergunta.style.display = 'none';
+            resposta_login.style.height = '40%';
+        } else {
+            login.innerHTML = '+'
+            resposta_login.style.display = 'none';
+            cadastro_pergunta.style.display = 'flex';
+            estufa_pergunta.style.display = 'flex';
+            dashboard_pergunta.style.display = 'flex';
+        }
+
+    }
+
+    function aparecer_cadastro() {
+        if (cadastro.innerHTML == '+') {
+            cadastro.innerHTML = '-'
+            resposta_cadastro.style.display = 'flex';
+            estufa_pergunta.style.display = 'none';
+            dashboard_pergunta.style.display = 'none';
+            login_pergunta.style.display = 'none'
+            resposta_cadastro.style.height = '40%';
+        } else {
+            cadastro.innerHTML = '+'
+            resposta_cadastro.style.display = 'none';
+            estufa_pergunta.style.display = 'flex';
+            dashboard_pergunta.style.display = 'flex';
+            login_pergunta.style.display = 'flex'
+        }
+    }
+
+    function aparecer_estufa() {
+        if (estufa.innerHTML == '+') {
+            estufa.innerHTML = '-'
+            resposta_estufa.style.display = 'flex';
+            login_pergunta.style.display = 'none';
+            cadastro_pergunta.style.display = 'none';
+            dashboard_pergunta.style.display = 'none';
+            resposta_estufa.style.height = '40%';
+
+        } else {
+            estufa.innerHTML = '+'
+            resposta_estufa.style.display = 'none';
+            login_pergunta.style.display = 'flex';
+            cadastro_pergunta.style.display = 'flex';
+            dashboard_pergunta.style.display = 'flex';
+        }
+    }
+
+    function aparecer_dashboard() {
+        if (dashboard.innerHTML == '+') {
+            dashboard.innerHTML = '-'
+            resposta_dashboard.style.display = 'flex';
+            login_pergunta.style.display = 'none';
+            cadastro_pergunta.style.display = 'none';
+            estufa_pergunta.style.display = 'none';
+            resposta_dashboard.style.height = '40%';
+        } else {
+            dashboard.innerHTML = '+'
+            resposta_dashboard.style.display = 'none';
+            login_pergunta.style.display = 'flex';
+            cadastro_pergunta.style.display = 'flex';
+            estufa_pergunta.style.display = 'flex';
+        }
+    }
+</script>

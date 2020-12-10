@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <title>Home</title>
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="ccs/modal.css">
+    <!-- Start of greensensors Zendesk Widget script -->
+    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=2612344f-8a27-4fad-b688-d3477b4c00fc">
+    </script>
+    <!-- End of greensensors Zendesk Widget script -->
+</head>
+
+<body>
+
+    <div class="modal-editar">
+        <div class="modalEditar">
+            <div class="image">
+                <img src="imagens/greenhouse2.svg">
+            </div>
+            <div class="formEstufa">
+<<<<<<< HEAD
+                <h3>Detalhes da estufa</h3>
+=======
+                <h3>Detalhes da Estufa</h3>
+>>>>>>> cb0e4108a22e400c48ca507aa85ae91ea348cde4
+                <form>
+                    <input type="text" id="estufaTipoCultura" placeholder="Tipo Cultura">
+                    <input type="text" id="tempMaxima" placeholder="Temperatura Maxima">
+                    <input type="text" id="tempMin" placeholder="Temperatura Minima">
+                    <input type="text" id="umiMin" placeholder="Umidade Minima">
+                    <input type="text" id="umiMax" placeholder="Umidade Máxima">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-excluir">
+        <div class="modalExcluir">
+            <p>Deseja realmente excluir a estufa?</p>
+            <div class="btns">
+                <a id="confirmaExcluir">Excluir Estufa</a>
+                <a id="cancelaExcluir">Cancelar</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="navbar">
+            <header>
+                <p>Green<span>Sensors</span></p>
+            </header>
+            <main>
+                <div class="item">
+                    <img src="imagens/house.svg">
+                    <a href="home.html">Home</a>
+                </div>
+                <div class="item">
+                    <img src="imagens/bar-chart.svg">
+                    <a href="estufas.html">Estatística</a>
+                </div>
+                <div class="item">
+                    <img src="imagens/players.svg">
+                    <a href="pag-perfil.html">Perfil</a>
+                </div>
+                <div class="item">
+                    <img src="imagens/speedometer.svg">
+                    <a href="pag-sensores.html">Sensores</a>
+                </div>
+                <div class="item">
+                    <img src="imagens/login.svg">
+                    <a onclick="logOff()">Sair</a>
+                </div>
+            </main>
+        </div>
+        <div class="info">
+            <div class="info-title">
+                <h1>Selecione as Estufas</h1>
+            </div>
+            <div class="info-detalhes">
+                <div class="title">
+                    <h1 id="title-contem">Escolha uma das estufas</h1>
+                    <p id="desc-contem">Selecione uma das estufas para ver mais detalhes</p>
+                    <h1 id="title-naoContem">Não possui estufas cadastradas</h1>
+                    <p id="desc-naoContem">Clique em "Criar Estufa" para adicionar uma estufa</p>
+                </div>
+                <div class="btns">
+                    <a id="criar_estufa">Criar Estufa</a>
+                    <a id="editar_estufa">Editar Estufa</a>
+                    <a id="excluir_estufa">Excluir Estufa</a>
+                </div>
+                <div class="nao-encontrado">
+                    <img src="imagens/add.svg">
+                </div>
+                <div class="estufas" style="display: none;">
+                    <!-- <div class="item-estufas">
+                        <img src="imagens/greenhouse2.svg" onclick="verificar()">
+                        <p id="nome_estufa"><a href="dashboard.html"> Estufa S1</a></p>
+                        <p id="local_estufa">Fazendo Bravo</p>
+                    </div> -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/verificacoes.js"></script>
+    <script src="js/verificarEstufas.js"></script>
+
+</body>
+
+</html>

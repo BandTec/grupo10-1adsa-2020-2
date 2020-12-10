@@ -1,0 +1,153 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body,
+html {
+    transition: all 0.8s;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 25%;
+    background: #16a085;
+}
+
+.navbar header {
+    color: #ecf0f1;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.navbar header span {
+    color: #05c46b;
+    font-size: 35px;
+}
+
+.navbar main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 250px;
+    height: 60px;
+    font-size: 20px;
+}
+
+.item a {
+    text-decoration: none;
+    color: #ecf0f1;
+    transition: color 0.5s;
+}
+
+.item img {
+    margin-right: 10px;
+    width: 15%;
+}
+
+.item a:hover {
+    color: #05c46b;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+}
+
+.info-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    background: #55efc4;
+    color: white;
+}
+
+.perfil_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.icone {
+    display: flex;
+    justify-content: center;
+    width: 20%;
+    height: 20%;
+}
+
+.icone img {
+    position: absolute;
+    height: 18%;
+    margin-top: 3%;
+}
+
+.perfil_content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 22px;
+    background-color: #d4ecd4;
+    width: 52%;
+    height: 79%;
+    border: 2px solid black;
+    margin-bottom: 5%;
+    flex-direction: column;
+}
+
+.perfil_content form {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.perfil_content input {
+    border: 2px solid black;
+    outline: none;
+    height: 7%;
+    width: 56%;
+    border-radius: 11px;
+    text-align: center;
+}
+
+.perfil_content button {
+    border: 2px solid black;
+    background-color: #05c46b;
+    outline: none;
+    height: 7%;
+    width: 45%;
+    border-radius: 11px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.perfil_content button:hover {
+    background-color: black;
+    color: white;
+}

@@ -1,0 +1,33 @@
+.div_estufas{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+}
+
+.div_estufa{
+    height: 90%;
+    border: 2px solid green;
+    width: 40%;
+    margin-top: -30px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;-webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.47);
+    -moz-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.47);
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.47);
+    background-color: #7febcc;
+}
+
+
+.separarestufa{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 40%;    
+    width: 90%;
+}
+
